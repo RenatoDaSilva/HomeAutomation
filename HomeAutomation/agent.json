@@ -1,0 +1,47 @@
+{
+  "description": "Home Automation with NodeMCU",
+  "language": "pt-br",
+  "disableInteractionLogs": false,
+  "disableStackdriverLogs": false,
+  "googleAssistant": {
+    "googleAssistantCompatible": true,
+    "project": "homeautomation-10239",
+    "welcomeIntentSignInRequired": false,
+    "startIntents": [],
+    "systemIntents": [],
+    "endIntentIds": [
+      "3eeb6014-c1e6-4609-8b20-235515d66efa",
+      "f6114206-ee08-4bc8-8b09-e14c82f15644",
+      "4af55926-ca46-4a07-8a53-3576e930ac14",
+      "bc9ed680-af74-455d-932f-726d57a5c408"
+    ],
+    "oAuthLinking": {
+      "required": false,
+      "grantType": "AUTH_CODE_GRANT"
+    },
+    "voiceType": "MALE_1",
+    "capabilities": [],
+    "protocolVersion": "V2",
+    "isDeviceAgent": false
+  },
+  "defaultTimezone": "America/Buenos_Aires",
+  "webhook": {
+    "url": "https://us-central1-homeautomation-10239.cloudfunctions.net/dialogflowFirebaseFulfillment",
+    "headers": {
+      "X-AIO-Key": "a6dcd2ad1a7b45729a92046619a109d2"
+    },
+    "available": true,
+    "useForDomains": false,
+    "cloudFunctionsEnabled": true,
+    "cloudFunctionsInitialized": true
+  },
+  "isPrivate": true,
+  "customClassifierMode": "use.after",
+  "mlMinConfidence": 0.3,
+  "supportedLanguages": [],
+  "onePlatformApiVersion": "v2",
+  "analyzeQueryTextSentiment": false,
+  "enabledKnowledgeBaseNames": [],
+  "knowledgeServiceConfidenceAdjustment": -0.4,
+  "dialogBuilderMode": false
+}

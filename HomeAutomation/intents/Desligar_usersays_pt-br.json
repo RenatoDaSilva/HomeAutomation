@@ -1,0 +1,71 @@
+[
+  {
+    "id": "0120a952-0439-4364-8f20-00d311e596d2",
+    "data": [
+      {
+        "text": "desativar",
+        "alias": "Apagar",
+        "meta": "@Apagar",
+        "userDefined": false
+      },
+      {
+        "text": " luz da ",
+        "userDefined": false
+      },
+      {
+        "text": "garagem",
+        "alias": "Dispositivos",
+        "meta": "@Dispositivos",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "f8b24d35-1c80-4e82-b963-54c3adc699a8",
+    "data": [
+      {
+        "text": "desligar",
+        "alias": "Apagar",
+        "meta": "@Apagar",
+        "userDefined": false
+      },
+      {
+        "text": " luz da ",
+        "userDefined": false
+      },
+      {
+        "text": "cozinha",
+        "alias": "Dispositivos",
+        "meta": "@Dispositivos",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "28556c8f-2e7f-4676-9854-3ba141d6649d",
+    "data": [
+      {
+        "text": "apagar",
+        "alias": "Apagar",
+        "meta": "@Apagar",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "corredor",
+        "alias": "Dispositivos",
+        "meta": "@Dispositivos",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]

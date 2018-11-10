@@ -1,0 +1,40 @@
+[
+  {
+    "value": "Sala",
+    "synonyms": [
+      "Sala"
+    ]
+  },
+  {
+    "value": "Cozinha",
+    "synonyms": [
+      "Cozinha"
+    ]
+  },
+  {
+    "value": "Copa",
+    "synonyms": [
+      "Copa"
+    ]
+  },
+  {
+    "value": "Garagem",
+    "synonyms": [
+      "Garagem",
+      "Frente",
+      "Rua"
+    ]
+  },
+  {
+    "value": "Fundos",
+    "synonyms": [
+      "Fundos"
+    ]
+  },
+  {
+    "value": "Corredor",
+    "synonyms": [
+      "Corredor"
+    ]
+  }
+]

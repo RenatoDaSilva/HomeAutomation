@@ -1,0 +1,49 @@
+{
+  "id": "4af55926-ca46-4a07-8a53-3576e930ac14",
+  "name": "Ligar",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "da04f2da-04ab-454b-aa5c-82845a2ab910",
+          "required": false,
+          "dataType": "@Acender",
+          "name": "Acender",
+          "value": "$Acender",
+          "isList": false
+        },
+        {
+          "id": "b7fe925a-96b6-4b90-898b-de44cc6258f9",
+          "required": false,
+          "dataType": "@Dispositivos",
+          "name": "Dispositivos",
+          "value": "$Dispositivos",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "pt-br",
+          "speech": [
+            "OK,  $Dispositivos está com a luz acesa",
+            "Beleza, $Dispositivos está com a luz acesa"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {
+        "google": false
+      },
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}

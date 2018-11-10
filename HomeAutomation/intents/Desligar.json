@@ -1,0 +1,48 @@
+{
+  "id": "bc9ed680-af74-455d-932f-726d57a5c408",
+  "name": "Desligar",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "e96b8758-b6e2-4c5a-8fa0-e4236104b202",
+          "required": false,
+          "dataType": "@Apagar",
+          "name": "Apagar",
+          "value": "$Apagar",
+          "isList": false
+        },
+        {
+          "id": "4c50e3a1-90f5-4e81-bc6b-44c0929de8ef",
+          "required": false,
+          "dataType": "@Dispositivos",
+          "name": "Dispositivos",
+          "value": "$Dispositivos",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "pt-br",
+          "speech": [
+            "Beleza, $Dispositivos com a luz apagada",
+            "Tudo certo, $Dispositivos com a luz apagada"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}
