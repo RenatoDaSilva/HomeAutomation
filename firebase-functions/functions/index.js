@@ -6,7 +6,6 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
 admin.initializeApp({
-    apiKey: 'AIzaSyDNEB7wFTiFqc9TyKwNmT9nZuHvTz7spr4',
     credential: admin.credential.applicationDefault(),
    databaseURL: 'ws://home-automation-renato.firebaseio.com'
  });
