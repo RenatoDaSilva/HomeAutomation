@@ -1,0 +1,329 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'i', '-g', 'node' ]
+2 info using npm@2.15.11
+3 info using node@v4.8.0
+4 verbose install initial load of /usr/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/lib/package.json
+6 silly cache add args [ 'node', null ]
+7 verbose cache add spec node
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'node',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'node',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: 'latest',
+8 silly cache add   type: 'tag' }
+9 silly addNamed node@latest
+10 verbose addNamed "latest" is being treated as a dist-tag for node
+11 info addNameTag [ 'node', 'latest' ]
+12 silly mapToRegistry name node
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'node',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   name: 'node',
+15 silly mapToRegistry   rawSpec: '',
+15 silly mapToRegistry   spec: 'latest',
+15 silly mapToRegistry   type: 'tag' }
+16 silly mapToRegistry uri https://registry.npmjs.org/node
+17 verbose addNameTag registry:https://registry.npmjs.org/node not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/node
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 01:01:33
+21 verbose request id 4bdd11d226a78e2d
+22 verbose etag W/"d015bcff2346759dad455b5b296c7bee"
+23 verbose lastModified Sun, 11 Nov 2018 15:35:18 GMT
+24 http request GET https://registry.npmjs.org/node
+25 http 304 https://registry.npmjs.org/node
+26 verbose headers { date: 'Tue, 20 Nov 2018 01:01:48 GMT',
+26 verbose headers   connection: 'keep-alive',
+26 verbose headers   'set-cookie': [ '__cfduid=de12602a9775229abba18f30c80096ab21542675708; expires=Wed, 20-Nov-19 01:01:48 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+26 verbose headers   'cf-cache-status': 'HIT',
+26 verbose headers   'cache-control': 'max-age=300',
+26 verbose headers   'cf-ray': '47c6fccb7a124ae5-GRU',
+26 verbose headers   etag: '"d015bcff2346759dad455b5b296c7bee"',
+26 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+26 verbose headers   'last-modified': 'Sun, 11 Nov 2018 15:35:18 GMT',
+26 verbose headers   vary: 'accept-encoding, accept',
+26 verbose headers   'x-amz-meta-rev': '436-a14e6ff9cb1bb47fae6d03142d5edb02',
+26 verbose headers   server: 'cloudflare' }
+27 silly get cb [ 304,
+27 silly get   { date: 'Tue, 20 Nov 2018 01:01:48 GMT',
+27 silly get     connection: 'keep-alive',
+27 silly get     'set-cookie': [ '__cfduid=de12602a9775229abba18f30c80096ab21542675708; expires=Wed, 20-Nov-19 01:01:48 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+27 silly get     'cf-cache-status': 'HIT',
+27 silly get     'cache-control': 'max-age=300',
+27 silly get     'cf-ray': '47c6fccb7a124ae5-GRU',
+27 silly get     etag: '"d015bcff2346759dad455b5b296c7bee"',
+27 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+27 silly get     'last-modified': 'Sun, 11 Nov 2018 15:35:18 GMT',
+27 silly get     vary: 'accept-encoding, accept',
+27 silly get     'x-amz-meta-rev': '436-a14e6ff9cb1bb47fae6d03142d5edb02',
+27 silly get     server: 'cloudflare' } ]
+28 verbose etag https://registry.npmjs.org/node from cache
+29 verbose get saving node to /home/renato/.npm/registry.npmjs.org/node/.cache.json
+30 verbose correctMkdir /home/renato/.npm correctMkdir not in flight; initializing
+31 silly addNameTag next cb for node with tag latest
+32 silly addNamed node@11.1.0
+33 verbose addNamed "11.1.0" is a plain semver version for node
+34 silly cache afterAdd node@11.1.0
+35 verbose afterAdd /home/renato/.npm/node/11.1.0/package/package.json not in flight; writing
+36 verbose correctMkdir /home/renato/.npm correctMkdir not in flight; initializing
+37 verbose afterAdd /home/renato/.npm/node/11.1.0/package/package.json written
+38 silly install resolved [ { name: 'node',
+38 silly install resolved     version: '11.1.0',
+38 silly install resolved     description: 'node',
+38 silly install resolved     main: 'index.js',
+38 silly install resolved     keywords: [ 'runtime' ],
+38 silly install resolved     repository:
+38 silly install resolved      { type: 'git',
+38 silly install resolved        url: 'git+https://github.com/aredridel/node-bin-gen.git' },
+38 silly install resolved     scripts: { preinstall: 'node installArchSpecificPackage' },
+38 silly install resolved     bin: { node: 'bin/node' },
+38 silly install resolved     dependencies: { 'node-bin-setup': '^1.0.0' },
+38 silly install resolved     license: 'ISC',
+38 silly install resolved     author: '',
+38 silly install resolved     engines: { npm: '>=5.0.0' },
+38 silly install resolved     bugs: { url: 'https://github.com/aredridel/node-bin-gen/issues' },
+38 silly install resolved     homepage: 'https://github.com/aredridel/node-bin-gen#readme',
+38 silly install resolved     _id: 'node@11.1.0',
+38 silly install resolved     _npmVersion: '6.4.1',
+38 silly install resolved     _nodeVersion: '10.13.0',
+38 silly install resolved     _npmUser: { name: 'aredridel', email: 'aredridel@dinhe.net' },
+38 silly install resolved     dist:
+38 silly install resolved      { integrity: 'sha512-m5XGeSfe8FnE36L5DQtoi/zH0HkXUITOatp8VG0AUN4sRmrXKRhFhCw/thMaG2GiKuNGqfqKlNCucGcc+BjDlQ==',
+38 silly install resolved        shasum: '2ba9e4184007841b42d17fd2fe1dbaa36467db02',
+38 silly install resolved        tarball: 'https://registry.npmjs.org/node/-/node-11.1.0.tgz',
+38 silly install resolved        fileCount: 3,
+38 silly install resolved        unpackedSize: 1475,
+38 silly install resolved        'npm-signature': '-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb6EwyCRA9TVsSAnZWagAAVZcP/1oAaHeesWONKcnTQ7QK\nPng4rgIHhHNew13WqQXW12M0v7GgVN0hAC1CBR77L/DUHSPGZgcm3XPQEHX+\n+Q74zUr1zHNQrk/x7ZutcPnrLFVrNB8OWN26xwrxVpiYOVsLu1N/bqhNdFjh\nDYymLGHE06Y9qioi7AEHa+NaIsgaY7QbTtrNCOjCCl0MLV/6to+cl19Rejl/\nUxsIlgusueLgUyebRRdkcNRPDiB6Tl8jMgw6RXVVp8QwJ4kX/yfhOCkGgf31\nWPZUV4M59jHC53JSPSnh4QF5niRGUf4MWIAuSwEN4parTnFO7lD8jfisO2v1\nG01dppjAwt2Z49+PoJyQ+tT0S+XobHIPHjf2ckUqMFi3l25OvpLL1bVEt5fV\nB6vVzaj6FQOa/7XeuNw9rPJZpvYNSxIrjoOFWOP5GMJ3T7laj/ZrkXPcRB67\n7e+0ZgEPz6utSShpquSN5mbK8OZSQvmLFJUQZAy9MN8T6Bpl7++d/D1zpRRh\ngAW4Kyhr1ENFUOi3OK/ne4/cMTbGxJkxeDDYiUolbW3Gn+VwOv5wAlR2VRuN\nFhXhATUGRS+GbGslzt6r2gDjoI0qldbvdWhUA1UNBgwPuLKJ3J3vsdthbltv\nHZP8CP3bJVKwU4tTQ+iAyPd9TFySUhn4UyxQ+if6keLWGqWu8GGxS145MJSh\nMKCN\r\n=WeO4\r\n-----END PGP SIGNATURE-----\r\n' },
+38 silly install resolved     maintainers: [ [Object], [Object] ],
+38 silly install resolved     directories: {},
+38 silly install resolved     _npmOperationalInternal:
+38 silly install resolved      { host: 's3://npm-registry-packages',
+38 silly install resolved        tmp: 'tmp/node_11.1.0_1541950513768_0.8354796725643623' },
+38 silly install resolved     _hasShrinkwrap: false,
+38 silly install resolved     _shasum: '2ba9e4184007841b42d17fd2fe1dbaa36467db02',
+38 silly install resolved     _resolved: 'https://registry.npmjs.org/node/-/node-11.1.0.tgz',
+38 silly install resolved     _from: 'node@latest',
+38 silly install resolved     readme: 'ERROR: No README data found!' } ]
+39 info install node@11.1.0 into /usr/lib
+40 info installOne node@11.1.0
+41 verbose installOne of node to /usr/lib not in flight; installing
+42 verbose correctMkdir /home/renato/.npm/_locks correctMkdir not in flight; initializing
+43 verbose lock using /home/renato/.npm/_locks/node-38b2e696cbf75278.lock for /usr/lib/node_modules/node
+44 warn engine node@11.1.0: wanted: {"npm":">=5.0.0"} (current: {"node":"4.8.0","npm":"2.15.11"})
+45 silly install write writing node 11.1.0 to /usr/lib/node_modules/node
+46 verbose unbuild lib/node_modules/node
+47 silly gentlyRm /usr/lib/node_modules/node is being purged from base /usr
+48 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/node
+49 verbose tar unpack /home/renato/.npm/node/11.1.0/package.tgz
+50 verbose tar unpacking to /usr/lib/node_modules/node
+51 silly gentlyRm /usr/lib/node_modules/node is being purged
+52 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/node
+53 silly gunzTarPerm modes [ '755', '644' ]
+54 silly gunzTarPerm extractEntry package.json
+55 silly gunzTarPerm extractEntry installArchSpecificPackage.js
+56 silly gunzTarPerm extractEntry README.md
+57 verbose write writing to /usr/lib/node_modules/node/package.json
+58 info preinstall node@11.1.0
+59 warn cannot run in wd node@11.1.0 node installArchSpecificPackage (wd=/usr/lib/node_modules/node)
+60 verbose readDependencies loading dependencies from /usr/lib/node_modules/node/package.json
+61 silly prepareForInstallMany adding node-bin-setup@^1.0.0 from node dependencies
+62 verbose readDependencies loading dependencies from /usr/lib/node_modules/node/package.json
+63 silly cache add args [ 'node-bin-setup@^1.0.0', null ]
+64 verbose cache add spec node-bin-setup@^1.0.0
+65 silly cache add parsed spec Result {
+65 silly cache add   raw: 'node-bin-setup@^1.0.0',
+65 silly cache add   scope: null,
+65 silly cache add   name: 'node-bin-setup',
+65 silly cache add   rawSpec: '^1.0.0',
+65 silly cache add   spec: '>=1.0.0 <2.0.0',
+65 silly cache add   type: 'range' }
+66 silly addNamed node-bin-setup@>=1.0.0 <2.0.0
+67 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for node-bin-setup
+68 silly addNameRange { name: 'node-bin-setup',
+68 silly addNameRange   range: '>=1.0.0 <2.0.0',
+68 silly addNameRange   hasData: false }
+69 silly mapToRegistry name node-bin-setup
+70 silly mapToRegistry using default registry
+71 silly mapToRegistry registry https://registry.npmjs.org/
+72 silly mapToRegistry data Result {
+72 silly mapToRegistry   raw: 'node-bin-setup',
+72 silly mapToRegistry   scope: null,
+72 silly mapToRegistry   name: 'node-bin-setup',
+72 silly mapToRegistry   rawSpec: '',
+72 silly mapToRegistry   spec: 'latest',
+72 silly mapToRegistry   type: 'tag' }
+73 silly mapToRegistry uri https://registry.npmjs.org/node-bin-setup
+74 verbose addNameRange registry:https://registry.npmjs.org/node-bin-setup not in flight; fetching
+75 verbose request uri https://registry.npmjs.org/node-bin-setup
+76 verbose request no auth needed
+77 info attempt registry request try #1 at 01:01:49
+78 http request GET https://registry.npmjs.org/node-bin-setup
+79 http 200 https://registry.npmjs.org/node-bin-setup
+80 verbose headers { date: 'Tue, 20 Nov 2018 01:01:49 GMT',
+80 verbose headers   'content-type': 'application/json; charset=UTF-8',
+80 verbose headers   'transfer-encoding': 'chunked',
+80 verbose headers   connection: 'keep-alive',
+80 verbose headers   'set-cookie': [ '__cfduid=d0228e0b74838a4e0efae7ab02d7ed1b21542675709; expires=Wed, 20-Nov-19 01:01:49 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+80 verbose headers   'cf-cache-status': 'REVALIDATED',
+80 verbose headers   'cache-control': 'max-age=300',
+80 verbose headers   'cf-ray': '47c6fccd6b9e4ae5-GRU',
+80 verbose headers   etag: 'W/"696d6ec470fda56a33885508a280edab"',
+80 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+80 verbose headers   'last-modified': 'Sun, 27 May 2018 09:55:03 GMT',
+80 verbose headers   vary: 'accept-encoding, accept',
+80 verbose headers   server: 'cloudflare',
+80 verbose headers   'content-encoding': 'gzip' }
+81 silly get cb [ 200,
+81 silly get   { date: 'Tue, 20 Nov 2018 01:01:49 GMT',
+81 silly get     'content-type': 'application/json; charset=UTF-8',
+81 silly get     'transfer-encoding': 'chunked',
+81 silly get     connection: 'keep-alive',
+81 silly get     'set-cookie': [ '__cfduid=d0228e0b74838a4e0efae7ab02d7ed1b21542675709; expires=Wed, 20-Nov-19 01:01:49 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+81 silly get     'cf-cache-status': 'REVALIDATED',
+81 silly get     'cache-control': 'max-age=300',
+81 silly get     'cf-ray': '47c6fccd6b9e4ae5-GRU',
+81 silly get     etag: 'W/"696d6ec470fda56a33885508a280edab"',
+81 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+81 silly get     'last-modified': 'Sun, 27 May 2018 09:55:03 GMT',
+81 silly get     vary: 'accept-encoding, accept',
+81 silly get     server: 'cloudflare',
+81 silly get     'content-encoding': 'gzip' } ]
+82 verbose get saving node-bin-setup to /home/renato/.npm/registry.npmjs.org/node-bin-setup/.cache.json
+83 verbose correctMkdir /home/renato/.npm correctMkdir not in flight; initializing
+84 silly addNameRange number 2 { name: 'node-bin-setup',
+84 silly addNameRange   range: '>=1.0.0 <2.0.0',
+84 silly addNameRange   hasData: true }
+85 silly addNameRange versions [ 'node-bin-setup',
+85 silly addNameRange   [ '1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.6' ] ]
+86 silly addNamed node-bin-setup@1.0.6
+87 verbose addNamed "1.0.6" is a plain semver version for node-bin-setup
+88 silly mapToRegistry name node-bin-setup
+89 silly mapToRegistry using default registry
+90 silly mapToRegistry registry https://registry.npmjs.org/
+91 silly mapToRegistry data Result {
+91 silly mapToRegistry   raw: 'node-bin-setup',
+91 silly mapToRegistry   scope: null,
+91 silly mapToRegistry   name: 'node-bin-setup',
+91 silly mapToRegistry   rawSpec: '',
+91 silly mapToRegistry   spec: 'latest',
+91 silly mapToRegistry   type: 'tag' }
+92 silly mapToRegistry uri https://registry.npmjs.org/node-bin-setup
+93 verbose addRemoteTarball https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz not in flight; adding
+94 verbose addRemoteTarball [ 'https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz',
+94 verbose addRemoteTarball   '4b5c9bb937ece702d7069b36ca78af4684677528' ]
+95 info retry fetch attempt 1 at 01:01:50
+96 info attempt registry request try #1 at 01:01:50
+97 http fetch GET https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz
+98 http fetch 200 https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz
+99 silly fetchAndShaCheck shasum 4b5c9bb937ece702d7069b36ca78af4684677528
+100 verbose addTmpTarball /tmp/npm-111-36d8c7da/registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz not in flight; adding
+101 verbose addTmpTarball already have metadata; skipping unpack for node-bin-setup@1.0.6
+102 verbose correctMkdir /home/renato/.npm correctMkdir not in flight; initializing
+103 silly cache afterAdd node-bin-setup@1.0.6
+104 verbose afterAdd /home/renato/.npm/node-bin-setup/1.0.6/package/package.json not in flight; writing
+105 verbose correctMkdir /home/renato/.npm correctMkdir not in flight; initializing
+106 verbose afterAdd /home/renato/.npm/node-bin-setup/1.0.6/package/package.json written
+107 silly install resolved [ { name: 'node-bin-setup',
+107 silly install resolved     version: '1.0.6',
+107 silly install resolved     description: '',
+107 silly install resolved     main: 'index.js',
+107 silly install resolved     author: { name: 'Aria Stewart', email: 'aredridel@dinhe.net' },
+107 silly install resolved     license: 'ISC',
+107 silly install resolved     gitHead: 'ad56be2b72108028fc058c07665035e34f25c0e9',
+107 silly install resolved     _id: 'node-bin-setup@1.0.6',
+107 silly install resolved     _npmVersion: '5.3.0',
+107 silly install resolved     _nodeVersion: '8.2.0',
+107 silly install resolved     _npmUser: { name: 'aredridel', email: 'aredridel@dinhe.net' },
+107 silly install resolved     dist:
+107 silly install resolved      { integrity: 'sha512-uPIxXNis1CRbv1DwqAxkgBk5NFV3s7cMN/Gf556jSw6jBvV7ca4F9lRL/8cALcZecRibeqU+5dFYqFFmzv5a0Q==',
+107 silly install resolved        shasum: '4b5c9bb937ece702d7069b36ca78af4684677528',
+107 silly install resolved        tarball: 'https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz' },
+107 silly install resolved     maintainers: [ [Object] ],
+107 silly install resolved     _npmOperationalInternal:
+107 silly install resolved      { host: 's3://npm-registry-packages',
+107 silly install resolved        tmp: 'tmp/node-bin-setup-1.0.6.tgz_1500953577141_0.3329963111318648' },
+107 silly install resolved     directories: {},
+107 silly install resolved     _shasum: '4b5c9bb937ece702d7069b36ca78af4684677528',
+107 silly install resolved     _resolved: 'https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz',
+107 silly install resolved     _from: 'node-bin-setup@>=1.0.0 <2.0.0' } ]
+108 info install node-bin-setup@1.0.6 into /usr/lib/node_modules/node
+109 info installOne node-bin-setup@1.0.6
+110 verbose installOne of node-bin-setup to /usr/lib/node_modules/node not in flight; installing
+111 verbose correctMkdir /home/renato/.npm/_locks correctMkdir not in flight; initializing
+112 verbose lock using /home/renato/.npm/_locks/node-bin-setup-f838f052e232d13b.lock for /usr/lib/node_modules/node/node_modules/node-bin-setup
+113 silly install write writing node-bin-setup 1.0.6 to /usr/lib/node_modules/node/node_modules/node-bin-setup
+114 verbose unbuild lib/node_modules/node/node_modules/node-bin-setup
+115 silly gentlyRm /usr/lib/node_modules/node/node_modules/node-bin-setup is being purged from base /usr
+116 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/node/node_modules/node-bin-setup
+117 verbose tar unpack /home/renato/.npm/node-bin-setup/1.0.6/package.tgz
+118 verbose tar unpacking to /usr/lib/node_modules/node/node_modules/node-bin-setup
+119 silly gentlyRm /usr/lib/node_modules/node/node_modules/node-bin-setup is being purged
+120 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/node/node_modules/node-bin-setup
+121 silly gunzTarPerm modes [ '755', '644' ]
+122 silly gunzTarPerm extractEntry package.json
+123 silly gunzTarPerm extractEntry index.js
+124 verbose write writing to /usr/lib/node_modules/node/node_modules/node-bin-setup/package.json
+125 info preinstall node-bin-setup@1.0.6
+126 verbose readDependencies loading dependencies from /usr/lib/node_modules/node/node_modules/node-bin-setup/package.json
+127 verbose readDependencies loading dependencies from /usr/lib/node_modules/node/node_modules/node-bin-setup/package.json
+128 silly install resolved []
+129 verbose about to build /usr/lib/node_modules/node/node_modules/node-bin-setup
+130 info build /usr/lib/node_modules/node/node_modules/node-bin-setup
+131 info linkStuff node-bin-setup@1.0.6
+132 silly linkStuff node-bin-setup@1.0.6 has /usr/lib/node_modules/node/node_modules as its parent node_modules
+133 silly linkStuff node-bin-setup@1.0.6 is part of a global install
+134 silly linkStuff node-bin-setup@1.0.6 is installed into a global node_modules
+135 verbose linkBins node-bin-setup@1.0.6
+136 verbose linkMans node-bin-setup@1.0.6
+137 verbose rebuildBundles node-bin-setup@1.0.6
+138 info install node-bin-setup@1.0.6
+139 info postinstall node-bin-setup@1.0.6
+140 verbose unlock done using /home/renato/.npm/_locks/node-bin-setup-f838f052e232d13b.lock for /usr/lib/node_modules/node/node_modules/node-bin-setup
+141 verbose about to build /usr/lib/node_modules/node
+142 info build /usr/lib/node_modules/node
+143 info linkStuff node@11.1.0
+144 silly linkStuff node@11.1.0 has /usr/lib/node_modules as its parent node_modules
+145 silly linkStuff node@11.1.0 is part of a global install
+146 silly linkStuff node@11.1.0 is installed into a global node_modules
+147 silly linkStuff node@11.1.0 is installed into the top-level global node_modules
+148 verbose linkBins node@11.1.0
+149 verbose link bins [ { node: 'bin/node' }, '/usr/bin', true ]
+150 verbose linkMans node@11.1.0
+151 verbose rebuildBundles node@11.1.0
+152 verbose rebuildBundles [ 'node-bin-setup' ]
+153 verbose unlock done using /home/renato/.npm/_locks/node-38b2e696cbf75278.lock for /usr/lib/node_modules/node
+154 verbose stack Error: ENOENT: no such file or directory, chmod '/usr/lib/node_modules/node/bin/node'
+154 verbose stack     at Error (native)
+155 verbose cwd /mnt/c/HomeAutomation
+156 error Linux 4.4.0-17134-Microsoft
+157 error argv "/usr/bin/nodejs" "/usr/bin/npm" "i" "-g" "node"
+158 error node v4.8.0
+159 error npm  v2.15.11
+160 error path /usr/lib/node_modules/node/bin/node
+161 error code ENOENT
+162 error errno -2
+163 error syscall chmod
+164 error enoent ENOENT: no such file or directory, chmod '/usr/lib/node_modules/node/bin/node'
+164 error enoent This is most likely not a problem with npm itself
+164 error enoent and is related to npm not being able to find a file.
+165 verbose exit [ -2, true ]
+166 verbose unbuild lib/node_modules/node
+167 info preuninstall node@11.1.0
+168 info uninstall node@11.1.0
+169 verbose unbuild rmStuff node@11.1.0 from /usr/lib/node_modules
+170 silly gentlyRm /usr/bin/node is being gently removed
+171 silly gentlyRm verifying /usr is an npm working directory
+172 silly gentlyRm containing path /usr is under npm's control, in /usr
+173 silly gentlyRm deletion target /usr/bin/node is under /usr
+174 verbose gentlyRm vacuuming from /usr/bin/node up to /usr
+175 silly vacuum-fs removing /usr/bin/node
+176 silly vacuum-fs quitting because other entries in /usr/bin
+177 info postuninstall node@11.1.0
+178 silly gentlyRm /usr/lib/node_modules/node is being purged from base /usr
+179 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/node
+180 silly vacuum-fs purging /usr/lib/node_modules/node
+181 silly vacuum-fs quitting because other entries in /usr/lib/node_modules
