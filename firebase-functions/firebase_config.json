@@ -2,5 +2,7 @@
     "databaseURL": "https://home-automation-renato.firebaseio.com",
     "projectId": "home-automation-renato",
     "storageBucket": "home-automation-renato.appspot.com",
-    "API-KEY": "AIzaSyDNEB7wFTiFqc9TyKwNmT9nZuHvTz7spr4"
+    "API-KEY": "AIzaSyDNEB7wFTiFqc9TyKwNmT9nZuHvTz7spr4",
+    "authDomain": "home-automation-renato.firebaseapp.com",
+    "messagingSenderId": "1032180582469"
   } 

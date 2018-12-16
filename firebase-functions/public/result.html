@@ -1,0 +1,31 @@
+<html><head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Home Automation 4</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+      <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
+      <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  </head>
+
+  <body>
+      <div class="container" id="sliders">
+      <div class="checkbox">
+      <label><input id="D1" type="checkbox" checked data-toggle="toggle" data-on="Ligar" data-off="Desligar">Sala</label>
+      </div>
+      <script>
+      $(function() {
+      $('#D1').change(function() {
+      $('#console-event').html('Toggle: ' + $('#D1').prop('id') + ' to ' + $('#D1').prop('checked'))      })    })
+      </script>
+      <div class="checkbox"><label><input id="D2" type="checkbox" data-toggle="toggle" data-on="Ligar" data-off="Desligar">Cozinha</label></div><script>  $(function() {    $('#D2').change(function() {      $('#console-event').html('Toggle: ' + $(this).prop('id') + ' to ' + $(this).prop('checked'))      })    })</script><div class="checkbox"><label><input id="D3" type="checkbox" data-toggle="toggle" data-on="Ligar" data-off="Desligar">Copa</label></div><script>  $(function() {    $('#D3').change(function() {      $('#console-event').html('Toggle: ' + $(this).prop('id') + ' to ' + $(this).prop('checked'))      })    })</script><div class="checkbox"><label><input id="D4" type="checkbox" data-toggle="toggle" data-on="Ligar" data-off="Desligar">Garagem</label></div><script>  $(function() {    $('#D4').change(function() {      $('#console-event').html('Toggle: ' + $(this).prop('id') + ' to ' + $(this).prop('checked'))      })    })</script><div class="checkbox"><label><input id="D5" type="checkbox" data-toggle="toggle" data-on="Ligar" data-off="Desligar">Fundos</label></div><script>  $(function() {    $('#D5').change(function() {      $('#console-event').html('Toggle: ' + $(this).prop('id') + ' to ' + $(this).prop('checked'))      })    })</script><div class="checkbox"><label><input id="D6" type="checkbox" data-toggle="toggle" data-on="Ligar" data-off="Desligar">Corredor</label></div><script>  $(function() {    $('#D6').change(function() {      $('#console-event').html('Toggle: ' + $(this).prop('id') + ' to ' + $(this).prop('checked'))      })    })</script><div class="checkbox"><label><input id="D7" type="checkbox" data-toggle="toggle" data-on="Ligar" data-off="Desligar">Sem uso</label></div><script>  $(function() {    $('#D7').change(function() {      $('#console-event').html('Toggle: ' + $(this).prop('id') + ' to ' + $(this).prop('checked'))      })    })</script><div class="checkbox"><label><input id="D8" type="checkbox" data-toggle="toggle" data-on="Ligar" data-off="Desligar">Sem uso</label></div><script>  $(function() {    $('#D8').change(function() {      $('#console-event').html('Toggle: ' + $(this).prop('id') + ' to ' + $(this).prop('checked'))      })    })</script></div>
+
+      <div id="console-event"></div>
+      <script src="./firebase.js"></script>
+  
+</body></html>

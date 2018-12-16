@@ -1,14 +1,28 @@
 'use strict';
 
-const {dialogflow} = require('actions-on-google');
-const app = dialogflow({debug: false});
+const { dialogflow } = require('actions-on-google');
+const app = dialogflow({ debug: false });
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
-admin.initializeApp({
+//to production
+var config = {
     credential: admin.credential.applicationDefault(),
-   databaseURL: 'ws://home-automation-renato.firebaseio.com'
- });
+    databaseURL: 'ws://home-automation-renato.firebaseio.com'
+};
+
+//to Debug
+// var config = {
+//     databaseURL: "https://home-automation-renato.firebaseio.com",
+//     projectId: "home-automation-renato",
+//     storageBucket: "home-automation-renato.appspot.com",
+//     APIKEY: "AIzaSyDNEB7wFTiFqc9TyKwNmT9nZuHvTz7spr4",
+//     authDomain: "home-automation-renato.firebaseapp.com",
+//     messagingSenderId: "1032180582469"
+// };
+
+admin.initializeApp(config);
+
 const db = admin.database();
 
 app.intent('Default Welcome Intent', conv => {
@@ -27,7 +41,7 @@ app.intent('Acao', acaoFunction);
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
-function acaoFunction(conv, {ligar, desligar, dispositivos}){
+function acaoFunction(conv, { ligar, desligar, dispositivos }) {
     var onoff = ligar.concat(desligar);
     var data = {};
     if (dispositivos == 'Todos') {
@@ -43,29 +57,33 @@ function acaoFunction(conv, {ligar, desligar, dispositivos}){
     else {
         data[dispositivos] = onoff;
     }
-    
+
     db.ref().update(data);
 
     conv.ask('Pronto!');
 }
 
-const dateOptions = {
-    hour12: false, 
-    timeZone: 'America/Sao_Paulo'
-};
-const currentDateTime = new Date(Date.now());
-const currentDateTimeFmt = currentDateTime.toLocaleString('pt-BR', dateOptions);
-
-
 function setValue(switchName, valueToChange) {
-    db.ref(switchName).set(valueToChange);
+    db.ref(switchName + "/value").set(valueToChange);
 }
 
- function removeSchedule(key) {
-     db.ref("agenda").child(key).remove();
- }
-
 exports.runScheduledActions = functions.https.onRequest((request, response) => {
+    const dateOptions = {
+        "hour12": false,
+        "year": "numeric",
+        "month": "long",
+        "day": "2-digit",
+        "hour": "2-digit",
+        "minute": "2-digit",
+        "second": "2-digit",
+        "timeZone": "America/Sao_Paulo"
+    };
+
+    const currentDateTime = new Date(Date.now());
+    const currentDateTimeFmt = currentDateTime.toLocaleString('pt-BR', dateOptions);
+    console.log("currentDateTime", currentDateTime);
+    console.log("currentDateTimeFmt", currentDateTimeFmt);
+
     var query = db.ref("agenda").orderByKey();
     query.once("value").then(function (events) {
         var html = "<html><body>";
@@ -80,8 +98,7 @@ exports.runScheduledActions = functions.https.onRequest((request, response) => {
 
             if (eventDateTime.valueOf() <= currentDateTime.valueOf()) {
                 setValue(eventData.switch, eventData.state);
-                removeSchedule(db, event.key);
-
+                db.ref("agenda/" + event.key).remove();
                 html = html + '<p style="color:#ff0000;">Este evento foi executado e removido</p>';
             }
 
@@ -92,10 +109,6 @@ exports.runScheduledActions = functions.https.onRequest((request, response) => {
     });
 });
 
-
-
 exports.runScheduleEvents = functions.https.onRequest((request, response) => {
-  response.send("Nada a exibir por enquanto");
+    response.send("Nada a exibir por enquanto");
 });
-
-
