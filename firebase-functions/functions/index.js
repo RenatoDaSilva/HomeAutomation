@@ -5,28 +5,23 @@ const app = dialogflow({ debug: false });
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
-//to production
+const welcomeHello = ['Olá!', 'Oi!', 'Daí?', 'Beleza?'];
+const welcomeSalute = ['Como posso te ajudar?', 'Em que posso lhe ser útil?', 'Fala logo que eu não tenho o dia todo!'];
+const okAnswers = ['Beleza!', 'Pronto!', 'OK!', 'Certo!'];
+const thanksAnswers1 = ['Beleza!', 'Tudo certo!', 'OK!', 'Tudo bem!'];
+const thanksAnswers2 = ['Se precisar é só chamar!', 'Estou a disposição!', 'Que a força esteja com você!'];
+
 var config = {
     credential: admin.credential.applicationDefault(),
     databaseURL: 'ws://home-automation-renato.firebaseio.com'
 };
-
-//to Debug
-// var config = {
-//     databaseURL: "https://home-automation-renato.firebaseio.com",
-//     projectId: "home-automation-renato",
-//     storageBucket: "home-automation-renato.appspot.com",
-//     APIKEY: "AIzaSyDNEB7wFTiFqc9TyKwNmT9nZuHvTz7spr4",
-//     authDomain: "home-automation-renato.firebaseapp.com",
-//     messagingSenderId: "1032180582469"
-// };
 
 admin.initializeApp(config);
 
 const db = admin.database();
 
 app.intent('Default Welcome Intent', conv => {
-    conv.ask('Olá! Como posso te ajudar?')
+    conv.ask(welcomeHello.sample() + ' ' + welcomeSalute.sample())
 })
 
 app.intent('Default Fallback Intent', conv => {
@@ -34,7 +29,7 @@ app.intent('Default Fallback Intent', conv => {
 })
 
 app.intent('Obrigado', conv => {
-    conv.close('Beleza! se precisar é só chamar')
+    conv.close(thanksAnswers1.sample() + ' ' + thanksAnswers2.sample())
 })
 
 app.intent('Acao', acaoFunction);
@@ -43,24 +38,58 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
 function acaoFunction(conv, { ligar, desligar, dispositivos }) {
     var onoff = ligar.concat(desligar);
-    var data = {};
     if (dispositivos == 'Todos') {
-        data.S1 = onoff;
-        data.S2 = onoff;
-        data.S3 = onoff;
-        data.S4 = onoff;
-        data.S5 = onoff;
-        data.S6 = onoff;
-        data.S7 = onoff;
-        data.S8 = onoff;
+        db.ref("D1/value").set(onoff);
+        db.ref("D2/value").set(onoff);
+        db.ref("D3/value").set(onoff);
+        db.ref("D4/value").set(onoff);
+        db.ref("D5/value").set(onoff);
+        db.ref("D6/value").set(onoff);
+        db.ref("D7/value").set(onoff);
+        db.ref("D8/value").set(onoff);
     }
     else {
-        data[dispositivos] = onoff;
+        db.ref(dispositivos + "/value").set(onoff);
     }
 
-    db.ref().update(data);
+    var onOffGender = setOnOffGender(dispositivos, ligar);
+    var okAnswer = okAnswers.sample();
 
-    conv.ask('Pronto!');
+    conv.ask(okAnswer + ' ' + onOffGender);
+
+    // getName(dispositivos)
+    // .then(dispositivoName => conv.ask(okAnswer + '.' + dispositivoName + ' ' + onOffGender));
+
+    // db.ref(dispositivos).once("value", function (snapshot) {
+    // var dispositivo = snapshot.val();
+    // console.log(dispositivo);
+    // conv.ask(okAnswer + ' ' + dispositivo.name + ' ' + onOffGender);
+    // });
+}
+
+// async function getName(key) {
+//     return db.ref(dispositivos).once("value", function (snapshot) {
+//         var dispositivoName = snapshot.val().name;
+//         return await dispositivoName;
+//     });
+// }
+
+function setOnOffGender(dispositivo, ligar) {
+    var prefix = '';
+    if (ligar == '') {
+        prefix = 'des';
+    }
+    var sufix = 'a';
+    if (dispositivo == 'D6') {
+        sufix = 'o';
+    }
+    if (dispositivo == 'D5') {
+        sufix = 'os';
+    }
+    if (dispositivo == 'Todos') {
+        sufix = 'os';
+    }
+    return prefix + 'ligad' + sufix;
 }
 
 function setValue(switchName, valueToChange) {
@@ -81,8 +110,6 @@ exports.runScheduledActions = functions.https.onRequest((request, response) => {
 
     const currentDateTime = new Date(Date.now());
     const currentDateTimeFmt = currentDateTime.toLocaleString('pt-BR', dateOptions);
-    console.log("currentDateTime", currentDateTime);
-    console.log("currentDateTimeFmt", currentDateTimeFmt);
 
     var query = db.ref("agenda").orderByKey();
     query.once("value").then(function (events) {
@@ -112,3 +139,8 @@ exports.runScheduledActions = functions.https.onRequest((request, response) => {
 exports.runScheduleEvents = functions.https.onRequest((request, response) => {
     response.send("Nada a exibir por enquanto");
 });
+
+Array.prototype.sample = function () {
+    return this[Math.floor(Math.random() * this.length)];
+}
+

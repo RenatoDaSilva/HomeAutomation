@@ -19,8 +19,3 @@ function gotoSchedule() {
 function newSchedule() {
   window.location.assign(root + "/newSchedule.html")
 }
-
-function reloadPage() {
-  location.reload(true);
-}
-

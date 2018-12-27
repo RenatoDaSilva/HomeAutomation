@@ -1,6 +1,16 @@
 'use strict';
 
-var config = {
+const dateOptions = {
+  "hour12": false,
+  "year": "numeric",
+  "month": "long",
+  "day": "2-digit",
+  "hour": "2-digit",
+  "minute": "2-digit",
+  "timeZone": "America/Sao_Paulo"
+};
+
+const config = {
   databaseURL: "https://home-automation-renato.firebaseio.com",
   projectId: "home-automation-renato",
   storageBucket: "home-automation-renato.appspot.com",
@@ -13,25 +23,8 @@ firebase.initializeApp(config);
 
 var db = firebase.database();
 
-function getNames() {
-  var returnObj = {};
-  var query = db.ref().orderByKey();
-  query.once("value").then(function (relays) {
-    relays.forEach(function (relay) {
-      var key = relay.key;
-      if (key.startsWith("D")) {
-        var item = relay.toJSON();
-        returnObj[key] = item.name;
-      }
-    })
-  })
-  return returnObj;
-}
-
-let names = getNames();
-
 (function () {
-  var query = db.ref("agenda").orderByKey();
+  var query = db.ref("agenda").orderByChild("timestamp");
   query.on("value", function (appointments) {
     var html = "";
     appointments.forEach(function (appointment) {
@@ -39,30 +32,21 @@ let names = getNames();
       var key = appointment.key;
 
       var appointmentStateStr = appointmentData.state == 0 ? "ligar" : "desligar";
-      var appointmentSwitch = appointmentData.switch;
-      var appointmentSwitchName = appointmentSwitch; //names[appointmentSwitch];
       var currentTimestamp = new Date();
       var appointmentTimestamp = new Date(appointmentData.timestamp);
-      var appointmentColor = currentTimestamp < appointmentTimestamp ? "#FFFFFF" : "#F5F5F5";
+      var appointmentColor = currentTimestamp < appointmentTimestamp ? "#FFFFFF" : "#FF0000";
+      var appointmentDateTimeFmt = appointmentTimestamp.toLocaleString('pt-BR', dateOptions);
 
-      const dateOptions = {
-        "hour12": false,
-        "year": "numeric",
-        "month": "long",
-        "day": "2-digit",
-        "hour": "2-digit",
-        "minute": "2-digit",
-        "second": "2-digit",
-        "timeZone": "America/Sao_Paulo"
-      };
-      var appointmentDateTimeFmt = appointmentTimestamp.toLocaleTimeString('pt-BR', dateOptions);
+      db.ref(appointmentData.switch).once("value")
+        .then(function (snapshot) {
+          var appointmentSwitchName = snapshot.child("name").val();
 
-      html += `<div class="well" style="margin: 4px 2px; padding: 5px; background-color: ${appointmentColor};">
-      <span style="font-size:15px;cursor:pointer; float: right" onclick="deleteSchedule(${key})">&#10006; </span>
-      ${appointmentSwitchName} irá ${appointmentStateStr} em ${appointmentDateTimeFmt}</div>`
+          html += `<div class="well" style="margin: 4px 2px; padding: 5px; background-color: ${appointmentColor};"><span style="font-size:15px;cursor:pointer; float: right" onclick="deleteSchedule('${key}')">&#10006; </span>${appointmentSwitchName} irá ${appointmentStateStr} em ${appointmentDateTimeFmt}</div>`;
+
+          document.getElementById("appointments").innerHTML = html;
+        });
     })
 
-    document.getElementById("appointments").innerHTML = html;
   })
 }());
 
