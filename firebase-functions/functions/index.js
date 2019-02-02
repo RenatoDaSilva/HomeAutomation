@@ -20,12 +20,29 @@ admin.initializeApp(config);
 
 const db = admin.database();
 
+const names = {};
+
+function getNames() {
+    var query = db.ref().orderByKey();
+    query.once("value", function (switches) {
+        switches.forEach(function (switchData) {
+            var switchName = switchData.val().name;
+            var key = switchData.key;
+            if (key.startsWith("D")) {
+                names[key] = switchName;
+            }
+        })
+    })
+};
+
+getNames();
+
 app.intent('Default Welcome Intent', conv => {
     conv.ask(welcomeHello.sample() + ' ' + welcomeSalute.sample())
 })
 
 app.intent('Default Fallback Intent', conv => {
-    conv.ask('Desculpe, não entendi o que você quer, pode repetir?')
+    conv.ask('Desculpe, não entendi o que você quer. Pode repetir?')
 })
 
 app.intent('Obrigado', conv => {
@@ -37,6 +54,8 @@ app.intent('Acao', acaoFunction);
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
 
 function acaoFunction(conv, { ligar, desligar, dispositivos }) {
+    var okAnswer = okAnswers.sample();
+    var onOffGender = setOnOffGender(dispositivos, ligar);
     var onoff = ligar.concat(desligar);
     if (dispositivos == 'Todos') {
         db.ref("D1/value").set(onoff);
@@ -47,32 +66,14 @@ function acaoFunction(conv, { ligar, desligar, dispositivos }) {
         db.ref("D6/value").set(onoff);
         db.ref("D7/value").set(onoff);
         db.ref("D8/value").set(onoff);
+
+        conv.ask(okAnswer + ' ' + dispositivos + ' ' + onOffGender);
     }
     else {
         db.ref(dispositivos + "/value").set(onoff);
+        conv.ask(okAnswer + ' ' + names[dispositivos] + ' ' + onOffGender);
     }
-
-    var onOffGender = setOnOffGender(dispositivos, ligar);
-    var okAnswer = okAnswers.sample();
-
-    conv.ask(okAnswer + ' ' + onOffGender);
-
-    // getName(dispositivos)
-    // .then(dispositivoName => conv.ask(okAnswer + '.' + dispositivoName + ' ' + onOffGender));
-
-    // db.ref(dispositivos).once("value", function (snapshot) {
-    // var dispositivo = snapshot.val();
-    // console.log(dispositivo);
-    // conv.ask(okAnswer + ' ' + dispositivo.name + ' ' + onOffGender);
-    // });
 }
-
-// async function getName(key) {
-//     return db.ref(dispositivos).once("value", function (snapshot) {
-//         var dispositivoName = snapshot.val().name;
-//         return await dispositivoName;
-//     });
-// }
 
 function setOnOffGender(dispositivo, ligar) {
     var prefix = '';
@@ -80,11 +81,11 @@ function setOnOffGender(dispositivo, ligar) {
         prefix = 'des';
     }
     var sufix = 'a';
-    if (dispositivo == 'D6') {
+    if (dispositivo == 'D2') {
         sufix = 'o';
     }
-    if (dispositivo == 'D5') {
-        sufix = 'os';
+    if (dispositivo == 'D8') {
+        sufix = 'o';
     }
     if (dispositivo == 'Todos') {
         sufix = 'os';
@@ -143,4 +144,3 @@ exports.runScheduleEvents = functions.https.onRequest((request, response) => {
 Array.prototype.sample = function () {
     return this[Math.floor(Math.random() * this.length)];
 }
-

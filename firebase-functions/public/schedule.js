@@ -27,6 +27,12 @@ var db = firebase.database();
   var query = db.ref("agenda").orderByChild("timestamp");
   query.on("value", function (appointments) {
     var html = "";
+    if (appointments.numChildren() == 0) {
+      html = '<div class="well" style="margin: 4px 2px; padding: 5px; background-color: #82E0AA;">Nenhum agendamento encontrado</div>';
+
+      document.getElementById("appointments").innerHTML = html;
+    } 
+
     appointments.forEach(function (appointment) {
       var appointmentData = appointment.val();
       var key = appointment.key;
