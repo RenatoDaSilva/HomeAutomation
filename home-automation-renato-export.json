@@ -1,12 +1,20 @@
 {
+  "D1" : {"value" : "1","name" : "Sala"},
+  "D2" : {"value" : "1","name" : "Cozinha"},
+  "D3" : {"value" : "1","name" : "Copa"},
+  "D4" : {"value" : "1","name" : "Garagem"},
+  "D5" : {"value" : "1","name" : "Fundos"},
+  "D6" : {"value" : "1","name" : "Corredor"},
+  "D7" : {"value" : "1","name" : "Sem uso"},
+  "D8" : {"value" : "1","name" : "Sem uso"},
   "S1" : "1",
   "S2" : "1",
   "S3" : "1",
   "S4" : "1",
   "S5" : "1",
   "S6" : "1",
-  "S7" : "0",
-  "S8" : "0",
+  "S7" : "1",
+  "S8" : "1",
   "Switch1" : "Sala",
   "Switch2" : "Cozinha",
   "Switch3" : "Copa",
@@ -14,5 +22,12 @@
   "Switch5" : "Fundos",
   "Switch6" : "Corredor",
   "Switch7" : "Sem uso",
-  "Switch8" : "Sem uso"
+  "Switch8" : "Sem uso",
+  "agenda" : {
+    "21" : {
+      "state" : "0",
+      "switch" : "S2",
+      "timestamp" : "2018-12-23T00:17:00.000Z"
+    }
+  }
 }
