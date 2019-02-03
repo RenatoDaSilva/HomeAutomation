@@ -21,8 +21,7 @@ var db = firebase.database();
       var relayData = relay.val();
       var key = relay.key;
       if (key.startsWith("D")) {
-        var isOn = (relayData.value == "0") ? "far" : "fas";
-        html += `<button id="${key}" value="${relayData.value}" type="button" onclick="doClick(this)" class="btn-lg btn-default btn-block"><i class="${isOn} fa-lightbulb"> ${relayData.name}</i></button>`;
+        html += `<button id="${key}" value="${relayData.value}" type="button" onclick="doClick(this)" class="btn-lg btn-default btn-block"><strong>${relayData.name}</strong></button>`;
       }
     })
 
