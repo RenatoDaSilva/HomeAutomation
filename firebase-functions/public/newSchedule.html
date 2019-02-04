@@ -37,6 +37,7 @@
             <select id="state">
                 <option value="0">Ligar</option>
                 <option value="1">Desligar</option>
+                <option value="-1">Inverter</option>
             </select>
         </p>
         <p>
@@ -47,6 +48,8 @@
             <input id="datetimestamp" type="date">
             <input id="timetimestamp" type="time">
         </p>
+        <p><input type="checkbox" id="cbRepeat" onclick="doShowRepeatOptions()">Repetir</p>
+        <p id="repeatOptions"></p>
         <button id="doSchedule" onclick="doSchedule()"> Agendar</button>
     </div>
     <div id="message"></div>

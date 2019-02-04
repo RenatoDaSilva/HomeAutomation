@@ -104,7 +104,19 @@ function setOnOffGender(dispositivo, ligar) {
 }
 
 function setValue(switchName, valueToChange) {
-    db.ref(switchName + "/value").set(valueToChange);
+    console.log(valueToChange);
+    if (valueToChange == 2) {
+        db.ref(switchName + "/value").once('value').then(function (snapshot) {
+            if (snapshot.val() == '0') {
+                db.ref(switchName + "/value").set('1');
+            } else {
+                db.ref(switchName + "/value").set('0');
+            }
+        });
+    }
+    else {
+        db.ref(switchName + "/value").set(valueToChange);
+    };
 }
 
 exports.runScheduledActions = functions.https.onRequest((request, response) => {
@@ -117,16 +129,36 @@ exports.runScheduledActions = functions.https.onRequest((request, response) => {
         html = html + `<h1>Data/Hora atual: ${currentDateTimeFmt}</h1>`;
         events.forEach(function (event) {
             var eventData = event.val();
-            const eventDateTime = new Date(eventData.timestamp);
-            const eventDateTimeFmt = eventDateTime.toLocaleString('pt-BR', dateOptions);
+            var eventDateTime = new Date(eventData.timestamp);
+            var eventDateTimeFmt = eventDateTime.toLocaleString('pt-BR', dateOptions);
+            const eventRepeat = eventData.repeat;
 
             html = html + `<h1>Evento ${event.key}</h1>`;
             html = html + `<p>Em ${eventDateTimeFmt} o botão ${eventData.switch} será alterado para o valor ${eventData.state}</p>`;
 
             if (eventDateTime.valueOf() <= currentDateTime.valueOf()) {
                 setValue(eventData.switch, eventData.state);
-                db.ref("agenda/" + event.key).remove();
-                html = html + '<p style="color:#ff0000;">Este evento foi executado e removido</p>';
+                if (eventRepeat == 'once') {
+                    db.ref("agenda/" + event.key).remove();
+                    html = html + '<p style="color:#ff0000;">Este evento foi executado e removido</p>';
+                }
+                else {
+                    var repeatLap = eventRepeat.split(' ');
+                    var interval = Number(repeatLap[0]);
+                    var period = repeatLap[1];
+                    switch (period) {
+                        case "minute":
+                            eventDateTime.setMinutes(eventDateTime.getMinutes() + interval);
+                            break;
+                        case "hour":
+                            eventDateTime.setHours(eventDateTime.getHours() + interval);
+                            break;
+                        case "day":
+                            eventDateTime.setDate(eventDateTime.getDate() + interval);
+                    }
+                    db.ref("agenda/" + event.key).update({ "timestamp": eventDateTime });
+                    html = html + '<p style="color:#ff0000;">Este evento foi executado e reagendado para ' + eventDateTime.toLocaleString('pt-BR', dateOptions) + '</p>';
+                }
             }
 
             html = html + '<br>';

@@ -35,11 +35,17 @@ function doSchedule() {
   var date = document.getElementById("datetimestamp").value;
   var time = document.getElementById("timetimestamp").value;
   var timestamp = new Date(date + "T" + time + ":00.000-02:00");
+  var repeat = "once";
+
+  if (document.getElementById("cbRepeat").checked) {
+    repeat = document.getElementById("interval").value + " " + document.getElementById("period").value;
+  }
    
   var postData = {
     "state": state,
     "switch": switchKey,
-    "timestamp": timestamp
+    "timestamp": timestamp,
+    "repeat": repeat
   };
 
   var newPostKey = db.ref().child('agenda').push().key;
@@ -56,4 +62,19 @@ function doSchedule() {
       }, 1500);
       
   return returnObj;
+}
+
+function doShowRepeatOptions() {
+  var html = "";
+  if (document.getElementById("cbRepeat").checked) {
+  html += 'a cada ';
+  html += '<input type="number" id="interval" min="1" style="text-align:right;width: 30px;">';
+  html += '<select id="period">';
+  html += '  <option value="minute">minuto(s)</option>';
+  html += '  <option value="hour">hora(s)</option>';
+  html += '  <option value="day">dia(s)</option>';
+  html += '</select>';
+}
+
+document.getElementById("repeatOptions").innerHTML = html;
 }
