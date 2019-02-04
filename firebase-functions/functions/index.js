@@ -10,6 +10,16 @@ const welcomeSalute = ['Como posso te ajudar?', 'Em que posso lhe ser útil?', '
 const okAnswers = ['Beleza!', 'Pronto!', 'OK!', 'Certo!'];
 const thanksAnswers1 = ['Beleza!', 'Tudo certo!', 'OK!', 'Tudo bem!'];
 const thanksAnswers2 = ['Se precisar é só chamar!', 'Estou a disposição!', 'Que a força esteja com você!'];
+const dateOptions = {
+    "hour12": false,
+    "year": "numeric",
+    "month": "long",
+    "day": "2-digit",
+    "hour": "2-digit",
+    "minute": "2-digit",
+    "second": "2-digit",
+    "timeZone": "America/Sao_Paulo"
+};
 
 var config = {
     credential: admin.credential.applicationDefault(),
@@ -98,17 +108,6 @@ function setValue(switchName, valueToChange) {
 }
 
 exports.runScheduledActions = functions.https.onRequest((request, response) => {
-    const dateOptions = {
-        "hour12": false,
-        "year": "numeric",
-        "month": "long",
-        "day": "2-digit",
-        "hour": "2-digit",
-        "minute": "2-digit",
-        "second": "2-digit",
-        "timeZone": "America/Sao_Paulo"
-    };
-
     const currentDateTime = new Date(Date.now());
     const currentDateTimeFmt = currentDateTime.toLocaleString('pt-BR', dateOptions);
 
@@ -144,3 +143,12 @@ exports.runScheduleEvents = functions.https.onRequest((request, response) => {
 Array.prototype.sample = function () {
     return this[Math.floor(Math.random() * this.length)];
 }
+
+exports.runLogFromArduino = functions.https.onRequest((request, response) => {
+    const currentDateTime = new Date(Date.now());
+    const logText = currentDateTime.toLocaleString('pt-BR', dateOptions) + " - " + JSON.stringify(request.body);
+
+    db.ref("last_log").set(logText);
+
+    response.send(logText);
+});
