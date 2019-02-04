@@ -94,7 +94,19 @@ function setOnOffGender(dispositivo, ligar) {
 }
 
 function setValue(switchName, valueToChange) {
-    db.ref(switchName + "/value").set(valueToChange);
+    console.log(valueToChange);
+    if (valueToChange == 2) {
+        db.ref(switchName + "/value").once('value').then(function (snapshot) {
+            if (snapshot.val() == '0') {
+                db.ref(switchName + "/value").set('1');
+            } else {
+                db.ref(switchName + "/value").set('0');
+            }
+        });
+    }
+    else {
+        db.ref(switchName + "/value").set(valueToChange);
+    };
 }
 
 exports.runScheduledActions = functions.https.onRequest((request, response) => {
