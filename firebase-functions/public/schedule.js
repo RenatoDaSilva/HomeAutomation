@@ -31,13 +31,24 @@ var db = firebase.database();
       html = '<div class="well" style="margin: 4px 2px; padding: 5px; background-color: #82E0AA;">Nenhum agendamento encontrado</div>';
 
       document.getElementById("appointments").innerHTML = html;
-    } 
+    }
 
     appointments.forEach(function (appointment) {
       var appointmentData = appointment.val();
       var key = appointment.key;
+      var appointmentStateStr = '';
 
-      var appointmentStateStr = appointmentData.state == 0 ? "ligar" : "desligar";
+      switch (appointmentData.state) {
+        case '0':
+          appointmentStateStr = "ligar";
+          break;
+        case '1':
+          appointmentStateStr = "desligar";
+          break;
+        case '2':
+          appointmentStateStr = "inverter";
+      };
+
       var currentTimestamp = new Date();
       var appointmentTimestamp = new Date(appointmentData.timestamp);
       var appointmentColor = currentTimestamp < appointmentTimestamp ? "#FFFFFF" : "#FF0000";

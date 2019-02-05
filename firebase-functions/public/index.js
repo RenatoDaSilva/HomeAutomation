@@ -20,7 +20,7 @@ var db = firebase.database();
     relays.forEach(function (relay) {
       var relayData = relay.val();
       var key = relay.key;
-      if (key.startsWith("D")) {
+      if (key.startsWith("D") && relayData.name != "Sem uso") {
         html += `<button id="${key}" value="${relayData.value}" type="button" onclick="doClick(this)" class="btn-lg btn-default btn-block"><strong>${relayData.name}</strong></button>`;
       }
     })
