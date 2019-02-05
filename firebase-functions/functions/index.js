@@ -105,7 +105,7 @@ function setOnOffGender(dispositivo, ligar) {
 
 function setValue(switchName, valueToChange) {
     console.log(valueToChange);
-    if (valueToChange == 2) {
+    if (valueToChange == '-1') {
         db.ref(switchName + "/value").once('value').then(function (snapshot) {
             if (snapshot.val() == '0') {
                 db.ref(switchName + "/value").set('1');

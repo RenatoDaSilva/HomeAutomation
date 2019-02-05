@@ -45,7 +45,7 @@ var db = firebase.database();
         case '1':
           appointmentStateStr = "desligar";
           break;
-        case '2':
+        case '-1':
           appointmentStateStr = "inverter";
       };
 
