@@ -17,7 +17,7 @@
   <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
   <script src="app.js"></script>
-  <script src="schedule.js"></script>
+  <script src="logViewer.js"></script>
 
   <link rel='stylesheet' href='index.css'>
 </head>
@@ -33,10 +33,10 @@
 
   
   <div class="container">
-    <p id="appointments"></p>
+    <p id="logs"></p>
   </div>
   <div class="footer">
-    <button type="button" class="btn btn-primary btn-lg pull-right" style="border-radius: 50%;font-size: 20px; width: 51px; height: 51px; margin: 12px" onclick="newSchedule()"><span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" class="btn btn-primary btn-lg pull-right" style="margin:15px" onclick="clearLog()">Limpar</button>
   </div>
 </body>
 

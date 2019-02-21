@@ -16,6 +16,10 @@ function gotoSchedule() {
   window.location.assign(root + "/schedule.html")
 }
 
+function gotoLogViewer() {
+  window.location.assign(root + "/logViewer.html")
+}
+
 function newSchedule() {
   window.location.assign(root + "/newSchedule.html")
 }

@@ -176,7 +176,11 @@ Array.prototype.sample = function () {
     return this[Math.floor(Math.random() * this.length)];
 }
 
+
 exports.runLogFromArduino = functions.https.onRequest((request, response) => {
+    doLog(JSON.stringify(request.body));
+    // setLogToGoogleDrive(JSON.stringify(request.body));
+
     const currentDateTime = new Date(Date.now());
     const logText = currentDateTime.toLocaleString('pt-BR', dateOptions) + " - " + JSON.stringify(request.body);
 
@@ -184,3 +188,54 @@ exports.runLogFromArduino = functions.https.onRequest((request, response) => {
 
     response.send(logText);
 });
+
+function doLog(logMessage) {
+    var dateTimeLog = new Date();
+  
+    var postData = {
+      "timestamp": dateTimeLog,
+      "message": logMessage
+    };
+  
+    var newPostKey = db.ref().child('log').push().key;
+    var updates = {};
+    updates[newPostKey] = postData;
+  
+    db.ref('log').update(updates);
+  }
+
+function setLogToGoogleDrive(logMessage) {
+    var request = require("request");
+
+    var options = {
+        method: 'POST',
+        url: 'https://script.google.com/macros/s/AKfycbw9oL_7sKp8Wq8NNGimS8t0lOnN4MRLUpP3KScwBw1u3XLMeBs/exec',
+        qs: { message: logMessage }
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+    });
+
+}
+
+function writeSheets(message) {
+    var ss = SpreadsheetApp.openById("AKfycbw9oL_7sKp8Wq8NNGimS8t0lOnN4MRLUpP3KScwBw1u3XLMeBs");
+    var sheet = ss.getSheets()[0];
+    var firebaseUrl = "https://myapp.firebaseio.com/";
+    var secret = "pCOCwKCC582jpqdZe2EqPqnW3IAd3UyO9oB4uaEL2";  // get this from firebase project settings
+    var base = FirebaseApp.getDatabaseByUrl(firebaseUrl);
+    var data = base.getData();
+    var keys = Object.keys(data.entries);
+    var sheetRow = [];
+    var entryKeys;
+    for (index in keys) {
+      sheetRow = [];
+      entryKeys = Object.keys(data.entries[keys[index]])
+      for (i in entryKeys) {
+        sheetRow.push(data.entries[keys[index]][entryKeys[i]]);
+      }
+      //Logger.log(sheetRow);
+      sheet.appendRow(sheetRow);                            
+    }
+  }

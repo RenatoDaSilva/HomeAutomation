@@ -63,7 +63,6 @@ var db = firebase.database();
           document.getElementById("appointments").innerHTML = html;
         });
     })
-
   })
 }());
 
