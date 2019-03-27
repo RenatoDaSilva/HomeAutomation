@@ -2,3 +2,4 @@ home-automation-renato-agenda-export.json
 *.log
 firebase-functions/.firebase/*.*
 firebase-functions/.vscode/*.*
+firebase-functions/.firebase/hosting.*
